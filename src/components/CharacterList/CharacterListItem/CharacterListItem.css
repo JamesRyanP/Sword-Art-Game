@@ -5,3 +5,13 @@ span {
 .character-name {
     font-weight: bold;
 }
+
+.champion {
+    color: gold;
+}
+
+.characterImage {
+    border-radius: 100px;
+    width: 150px;
+    height: 150px;
+}

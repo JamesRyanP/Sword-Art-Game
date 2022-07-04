@@ -1,20 +1,26 @@
-import React from 'react'
-import './CharacterListItem.css'
+import { ColorModeProvider, Td, Tr } from "@chakra-ui/react";
+import React from "react";
+import "./CharacterListItem.css";
 
 //React component can receive one argument: props
 //You can pass data to the react component by using props.
 //Props is an object that groups data that is passed to a component.
-export const CharacterListItem = ({character, isChampion}) => {
-    const {name, health, fraction, weapon, damagePerHit} = character;
-    return (
-        //When you use repeating elements in JSX, you should use key attribute
-        //It's required for React to be able to update the element
-        <li key={name}>
-          <span className="character-name">{isChampion ? `Champion ${name}` : name}</span>
-          <span>{health}</span>
-          <span>{fraction}</span>
-          <span>{weapon}</span>
-          <span>{damagePerHit}</span>
-        </li>
-      );
-}
+export const CharacterListItem = ({ character, isChampion }) => {
+  const { name, health, faction, weapon, damagePerHit, image } = character;
+  return (
+    //When you use repeating elements in JSX, you should use key attribute
+    //It's required for React to be able to update the element
+    <Tr key={name}>
+      <Td><img src={image} className="characterImage" ></img></Td>
+      <Td className="character-name">
+        {isChampion ? <div className="champion">Godmode {name}</div> : name}
+      </Td>
+      <Td>{faction}</Td>
+      <Td>{weapon}</Td>
+      <Td isNumeric>{health}</Td>
+      <Td isNumeric>{damagePerHit}</Td>
+
+
+    </Tr>
+  );
+};
