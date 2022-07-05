@@ -31,6 +31,7 @@ export const App = () => {
       weapon: "Rock",
       damagePerHit: 80,
       image: Gon,
+      backstory: "Gon is on a mission to find his father Ging, the greatest hunter that ever lived",
     },
     {
       name: "Killua",
@@ -39,6 +40,7 @@ export const App = () => {
       weapon: "Godspeed",
       damagePerHit: 35,
       image: Killua,
+      backstory: "Heir to the Zoldyck family of assassins, Killua no longer wishes to kill, but to instead help his best friend Gon on his journey",
     },
     {
       name: "Hisoka",
@@ -47,14 +49,16 @@ export const App = () => {
       weapon: "Bungee Gum",
       damagePerHit: 50,
       image: Hisoka,
+      backstory: "#4 of the Phantom troupe, Hisoka seems only interested in fighting those with great potential.",
     },
     {
       name: "Chrollo",
-      health: 75,
+      health: 100,
       faction: "Phantom Troupe",
       weapon: "Bandits Secret",
-      damagePerHit: 80,
+      damagePerHit: 40,
       image: Chrollo,
+      backstory: "Leader and founder of the troupe, he is known to have fought both a member of the Zoldyck family and another and almost won",
     },
   ];
   const { response, error } = useFetch(

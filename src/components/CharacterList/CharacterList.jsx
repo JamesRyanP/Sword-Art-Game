@@ -11,7 +11,7 @@ export const CharacterList = ({ characters }) => {
       <TableCaption>Character table</TableCaption>
       <Thead>
         <Tr>
-          <Th>ICON</Th>
+          <Th>BACKSTORY</Th>
           <Th>NAME</Th>
           <Th>FACTION</Th>
           <Th>WEAPON</Th>

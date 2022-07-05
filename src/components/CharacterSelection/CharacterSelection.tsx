@@ -1,6 +1,8 @@
 import React from "react";
 import { Text, Checkbox, CheckboxGroup, Flex, Stack } from "@chakra-ui/react";
 
+
+
 export const CharacterSelection = ({ characters }) => {
   return (
     <Flex justify={"center"} align={"center"} direction={"column"}>
@@ -8,7 +10,10 @@ export const CharacterSelection = ({ characters }) => {
       <CheckboxGroup size='lg' colorScheme="blue">
         <Stack spacing={[1, 5]} direction={["column", "row"]}>
           {characters.map((character: any) => (
-            <Checkbox value={character.name} key={character.name}>
+            <Checkbox 
+            value={character.name} 
+            key={character.name}  
+           >
               {character.name}
             </Checkbox>
           ))}
