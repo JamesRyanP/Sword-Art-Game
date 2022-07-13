@@ -1,14 +1,20 @@
-import "./App.css";
-import React, { useState } from "react";
-import { } from "@chakra-ui/react";
-import { Login } from "./Login/Login";
-import { CharacterList } from "./CharacterList/CharacterList";
+import { useState } from "react";
 import { useFetch } from "../hooks/useFetch";
-import { CharacterSelection } from "./CharacterSelection/CharacterSelection";
+import "./App.css";
+import { CharactersScreen } from "./Screens/CharactersScreen";
+import { Login } from "./Login/Login";
+import { Battleground } from "./Battleground/Battleground";
+import { Text } from "@chakra-ui/react";
 import Chrollo from "./CharacterImages/Chrollo.jpg";
 import Gon from "./CharacterImages/Gon.jpg";
 import Hisoka from "./CharacterImages/Hisoka.jpg";
 import Killua from "./CharacterImages/Killua.jpg";
+
+// APA citations for images
+// Blanc, A., Hunter x Hunter, 2022, .Jpg, https://www.pinterest.fr/pin/788059634780164009/, Gon.jpg 
+// anime-planet, Chrollo LUCILFER, 2022, .Jpg, https://www.anime-planet.com/manga/hunter-x-hunter/characters
+// 凱鴻 蕭, 2022, Jpg, https://www.pinterest.ca/pin/642888915561334992/
+// Hisoka, 2022, Jpg, https://www.wallpaperflare.com/male-anime-character-wallpaper-hunter-x-hunter-hisoka-wallpaper-298642
 
 //React application can be represented as a tree of React components
 //This is a react root component
@@ -23,6 +29,9 @@ import Killua from "./CharacterImages/Killua.jpg";
 
 export const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isFightGoingOn, setFightStart] = useState(false);
+  const [battleCharacters, setBattleCharacters] = useState([]);
+  const [winner, setWinner] = useState(null);
   const characters = [
     {
       name: "Gon",
@@ -74,17 +83,30 @@ export const App = () => {
     //In react we can't render objects or arrays
     return <>Error: {error.message} </>;
   }
+  console.log("Selected characters", battleCharacters);
 
-  const userNotLoggedIn = (
-    <h3 className="not-logged-in">
-      Please log in as admin to see character list
-    </h3>
-  );
   return (
     <div className="App">
       {!isLoggedIn ? <Login setLoggedIn={setIsLoggedIn} /> : null}
-      {isLoggedIn ? <CharacterList characters={characters} /> : userNotLoggedIn}
-      {isLoggedIn ? <CharacterSelection characters={characters} /> : null}
+      {isLoggedIn && !isFightGoingOn ? (
+        <CharactersScreen
+          characters={characters}
+          setFightStart={setFightStart}
+          setBattleCharacters={setBattleCharacters}
+        />
+      ) : null}
+      {isFightGoingOn && !winner ? (
+        <Battleground
+          winner={winner}
+          setWinner={setWinner}
+          battleCharacters={battleCharacters}
+        />
+      ) : null}
+      {isFightGoingOn && winner ? (
+        <Text fontSize={"5xl"} fontWeight="800">
+          Winner of the battle is {winner}
+        </Text>
+      ) : null}
     </div>
   );
 };
