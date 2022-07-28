@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export const BattlegroundScreen = ({
-  isLoggedIn,
   setWinner,
   winner,
 }) => {
   const battleCharacters = useSelector((store: any) => store.characters.battleCharacters);
+  const isLoggedIn = useSelector((store: any) => store.login.isLoggedIn);
   const [fighterOne, fighterTwo] = battleCharacters;
   const [firstAttacks, setFirstAttacks] = useState(false);
   const [secondAttacks, setSecondAttacks] = useState(false);
