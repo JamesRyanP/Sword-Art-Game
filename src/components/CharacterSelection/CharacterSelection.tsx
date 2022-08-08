@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { setBattleCharacters } from "../../slices/characterSlice";
+import { setBattleCharacters } from "../../slices/charactersSlice";
 
 export const CharacterSelection = () => {
   const characters = useSelector((state: any) => state.characters.characterList);

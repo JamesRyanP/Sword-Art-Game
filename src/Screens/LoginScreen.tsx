@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-
 import { Button, Input, Flex, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setIsLoggedIn } from "../slices/loginSlice";
+
 const adminCredentials = { userName: "admin", password: "admin" };
 
 
@@ -11,13 +11,14 @@ const adminCredentials = { userName: "admin", password: "admin" };
 //1. User types his login and password and clicks login button
 //2. If the login password combination is correct, the user is redirected to the character list
 export const LoginScreen = () => {
-  const dispatch = useDispatch();
   //Rule 1: we never update the state directly, we always use setState
   //Rule 2: when state changes, the component re-renders
   //Rule 3: setState is asynchronous, it doesn't block the execution of the code
   //UseState returns an array with two elements: state and the function to update it
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
 
   //This hook is used to navigate to other pages
   const navigate = useNavigate();
@@ -54,8 +55,8 @@ export const LoginScreen = () => {
       userName === adminCredentials.userName &&
       password === adminCredentials.password
     ) {
-      dispatch(setIsLoggedIn(true));
       navigate("/characters");
+      dispatch(setIsLoggedIn(true));
     } else {
       dispatch(setIsLoggedIn(false));
     }

@@ -19,7 +19,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 //"You are not logged in"
 
 export const App = () => {
-
   const [winner, setWinner] = useState(null);
   const { response, error } = useFetch(
     "https://jsonplaceholder.typicode.com/posts"
@@ -41,7 +40,7 @@ export const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<LoginScreen/>}
+            element={<LoginScreen />}
           />
           <Route
             path="/characters"
@@ -55,7 +54,6 @@ export const App = () => {
             path="/battleground"
             element={
               <BattlegroundScreen
-
                 setWinner={setWinner}
                 winner={winner}
               />
